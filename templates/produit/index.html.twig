@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Produit index</h1>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.id }}</td>
+                    <td>
+                        <img src="{{ vich_uploader_asset(produit, 'imageFile')|imagine_filter('carre') }}" alt="{{ produit.nom }}" class="img-fluid" style="max-width: 100px;" />
+                    </td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.prix }}</td>
+                    <td>{{ produit.description }}</td>
+                    <td>
+                        <a href="{{ path('app_produit_show', {'id': produit.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                        <a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_produit_new') }}" class="btn btn-success">Créer un nouveau produit</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,271 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="page-wrapper">
+
+        <!-- Preloader -->
+        <div id="preloader">
+            <div class="loader">
+                <div class="load-circle"><div></div><div></div></div>
+            </div>
+        </div>
+        <!-- Preloader end-->
+
+        <!-- Header -->
+        <header class="header shadow header-fixed border-0">
+            <div class="container">
+                <div class="header-content">
+                    <div class="left-content">
+                        <a href="javascript:void(0);" class="menu-toggler">
+                            <i class="icon feather icon-menu"></i>
+                        </a>
+                    </div>
+                    <div class="mid-content header-logo">
+                        <a href="index.html">
+                            <img class="logo app-logo" src="assets/images/logos/light/logo1.svg" alt="logo">
+                            <!-- <img class="logo-dark" src="assets/images/svg/logo.svg" alt="logo">
+                            <img class="logo-light" src="assets/images/svg/logo-white.svg" alt="logo"> -->
+                        </a>
+                    </div>
+                    <div class="right-content">
+                        <a href="search.html" class="search-icon">
+                            <i class="icon feather icon-search"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header -->
+
+        <!-- Sidebar -->
+        <div class="dark-overlay"></div>
+        <div class="sidebar" style="background-image: url('assets/images/background/bg3.png');">
+            <a href="profile.html" class="author-box">
+                <div class="dz-media">
+                    <img src="assets/images/user-profile.jpg" alt="author-image">
+                </div>
+                <div class="dz-info">
+                    <h5 class="name">John Doe</h5>
+                    <span>example@gmail.com</span>
+                </div>
+            </a>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="nav-link active" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-home"></i>
+					</span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-layers"></i>
+					</span>
+                        <span>Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-grid"></i>
+					</span>
+                        <span>Components</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-book-open"></i>
+					</span>
+                        <span>Pages</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-list"></i>
+					</span>
+                        <span>Featured</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-heart"></i>
+					</span>
+                        <span>Wishlist</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-repeat"></i>
+					</span>
+                        <span>Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-shopping-cart"></i>
+					</span>
+                        <span>My Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-user"></i>
+					</span>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">
+					<span class="dz-icon">
+						<i class="icon feather icon-log-out"></i>
+					</span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-bottom">
+                <ul class="app-setting">
+                    <li class="nav-color pb-2">
+                        <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+						<span class="dz-icon">
+							<svg class="color-plate" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M10.725.787a9.325 9.325 0 0 1 	8.425 7.65 2.35 2.35 0 0 1-.625 2.275 1.662 1.662 0 0 1-1.863.188c-.462-.225-.812-.6-1.25-.788a4.238 4.238 0 0 0-4.5.725A3.751 3.751 0 0 0 10 14.825c.237.725.75 1.25 1.012 1.987a1.713 1.713 0 0 1-.762 2.063 3.312 3.312 0 0 1-2.5.125A9.262 9.262 0 0 1 3.125 3.837a9.2 9.2 0 0 1 7.6-3.05zM2.162 11.6A8.112 8.112 0 0 0 8 17.85c.487.125 1.25.3 1.6 0 .35-.3.15-.9-.125-1.25a4.674 4.674 0 0 1-.725-1.388A5 5 0 0 1 10 9.925a5.187 5.187 0 0 1 3.6-1.4 5.063 5.063 0 0 1 3.137 1.025.887.887 0 0 0 .95.225c.4-.213.338-.75.263-1.125a8.413 8.413 0 0 0-1.963-3.95 8.087 8.087 0 0 0-11.937 0 8.075 8.075 0 0 0-1.9 6.9h.012z"/><path d="M14.313 4.862a1.575 1.575 0 1 1 .024 3.15 1.575 1.575 0 0 1-.024-3.15zm0 2.2a.637.637 0 1 0 0-1.274.637.637 0 0 0 0 1.274zm-4.075-4.075a1.575 1.575 0 1 1 0 3.15 1.575 1.575 0 0 1 0-3.15zm0 2.2a.637.637 0 1 0 0-1.274.637.637 0 0 0 0 1.274zM6.25 7.925a1.575 1.575 0 1 1 .025-3.15 1.575 1.575 0 0 1-.025 3.15zm0-2.2A.637.637 0 1 0 6.25 7a.637.637 0 0 0 0-1.275zm.125 4.675a1.575 1.575 0 1 1-3.15 0 1.575 1.575 0 0 1 3.15 0zm-2.2 0a.638.638 0 1 0 1.275 0 .638.638 0 0 0-1.275 0zm2.075 2.387a1.575 1.575 0 1 1 0 3.151 1.575 1.575 0 0 1 0-3.15zm0 2.213a.638.638 0 1 0 0-1.276.638.638 0 0 0 0 1.276z"/>
+							</svg>
+						</span>
+                            <span>Color Theme</span>
+                            <div class="color-active ms-auto">
+                                <span>Active</span>
+                                <div class="current-color"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="mode" href="javascript:void(0);">
+						<span class="dz-icon">
+							<i class="icon feather icon-moon"></i>
+						</span>
+                            <span>Dark Mode</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" class="switch-input theme-btn" id="toggle-dark-menu">
+                                <label class="custom-switch-label" for="toggle-dark-menu"></label>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="app-info">
+                    <h6 class="name">W3Cart Fashion Store</h6>
+                    <span class="ver-info">App Version 1.0</span>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar End -->
+
+        <!-- Page Content Start -->
+        <div class="page-content space-top p-b80">
+            <div class="container p-0">
+                <!-- Banner -->
+                <div class="dz-banner">
+                    <div class="swiper banner-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic1.png');"></div>
+                                <div class="banner-content">
+                                    <span class="font-w500">COMMANDER VOS PRODUITS</span>
+                                    <h2 class="offer">A des prix bas</h2>
+                                    <p>Decouvrer les ici</p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic2.png');"></div>
+                                <div class="banner-content content-right">
+                                    <span class="font-w500">COMMANDER VOS PRODUITS</span>
+                                    <h2 class="offer">A des prix bas</h2>
+                                    <p>Decouvrer les ici</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination style-2"></div>
+                    </div>
+                </div>
+                <!-- Banner End -->
+
+                <div class="title-bar container mb-0 pb-0">
+                    <h5 class="title font-w800 mb-0">Tout nos produits</h5>
+                </div>
+
+                <!-- Shop Section Strat -->
+                <div class="container">
+                    <div class="row g-3">
+                        {% for produit in produits %}
+                        <div class="col-6">
+                            <div class="shop-card">
+                                <div class="dz-media">
+                                    <a href="#">
+                                        <img src="{{ vich_uploader_asset(produit, 'imageFile')|imagine_filter('carre') }}" alt="image">
+                                    </a>
+                                    <a href="javascript:void(0);" class="item-bookmark">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                    </a>
+                                </div>
+                                <div class="dz-content">
+                                    <span class="font-12">{{ produit.nom }}</span>
+                                    <h6 class="title"><a href="#">{{ produit.description }}</a></h6>
+                                    <h6 class="price">{{ produit.prix }} CFA</h6>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <!-- Shop Section End -->
+
+
+            </div>
+        </div>
+        <!-- Page Content End -->
+
+        <!-- Menubar -->
+        <div class="menubar-area footer-fixed rounded-0">
+            <div class="toolbar-inner menubar-nav">
+                <a href="#" class="nav-link active">
+                    <i class="icon feather icon-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="icon feather icon-grid"></i>
+                    <span>Categories</span>
+                </a>
+                <a href="#" class="nav-link cart-handle">
+                    <div class="hexad-menu">
+                        <img src="assets/images/menu-shape-dark.svg" class="shape-dark" alt="">
+                        <img src="assets/images/menu-shape-light.svg" class="shape-light" alt="">
+                        <i class="icon feather icon-shopping-bag"></i>
+                    </div>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="icon feather icon-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <i class="icon feather icon-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}
