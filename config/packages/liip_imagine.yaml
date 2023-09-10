@@ -2,7 +2,7 @@ liip_imagine:
     driver: "gd"
     filter_sets:
         carre:
-            quality: 40 # réduire la qualité à 75%
+            quality: 10 # réduire la qualité à 75%
             filters:
                 scale:
                      dim: [250, 250] # Une taille plus petite pour les écrans de mobile
