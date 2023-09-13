@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ produit.id }}</td>
                     <td>
-                        <img src="{{ vich_uploader_asset(produit, 'imageFile')|imagine_filter('carre') }}" alt="{{ produit.nom }}" class="img-fluid" style="max-width: 100px;" />
+                        <img src="{{ vich_uploader_asset(produit, 'imageFile') }}" alt="{{ produit.nom }}" class="img-fluid" style="max-width: 100px;" />
                     </td>
                     <td>{{ produit.nom }}</td>
                     <td>{{ produit.prix }}</td>
