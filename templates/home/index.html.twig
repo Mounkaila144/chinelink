@@ -23,14 +23,14 @@
                         </a>
                     </div>
                     <div class="mid-content header-logo">
-                        <a href="index.html">
-                            <img class="logo app-logo" src="assets/images/logos/light/logo1.svg" alt="logo">
-                            <!-- <img class="logo-dark" src="assets/images/svg/logo.svg" alt="logo">
-                            <img class="logo-light" src="assets/images/svg/logo-white.svg" alt="logo"> -->
+                        <a href="https://wa.me/8615215855475">
+                            <img height="40" class="logo app-logo" src="{{ asset('assets/images/logos/light/chinelink.png') }}" alt="logo">
+                            <!-- <img class="logo-dark" src="{{ asset('assets/images/svg/logo.svg') }}" alt="logo">
+                            <img class="logo-light" src="{{ asset('assets/images/svg/logo-white.svg') }}" alt="logo"> -->
                         </a>
                     </div>
                     <div class="right-content">
-                        <a href="search.html" class="search-icon">
+                        <a href="https://wa.me/8615215855475" class="search-icon">
                             <i class="icon feather icon-search"></i>
                         </a>
                     </div>
@@ -41,97 +41,42 @@
 
         <!-- Sidebar -->
         <div class="dark-overlay"></div>
-        <div class="sidebar" style="background-image: url('assets/images/background/bg3.png');">
-            <a href="profile.html" class="author-box">
+        <div class="sidebar" style="background-image: url('{{ asset('assets/images/background/bg3.png') }}');">
+            <a href="https://wa.me/8615215855475" class="author-box">
                 <div class="dz-media">
-                    <img src="assets/images/user-profile.jpg" alt="author-image">
+                    <img src="{{ asset('assets/images/souley.jpg') }}" alt="author-image">
                 </div>
                 <div class="dz-info">
-                    <h5 class="name">John Doe</h5>
-                    <span>example@gmail.com</span>
+                    <h5 class="name">Chinelink</h5>
+                    <span>ChineLink@gmail.com</span>
                 </div>
             </a>
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="nav-link active" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-home"></i>
-					</span>
-                        <span>Home</span>
+                    <a class="nav-link" href="https://wa.me/8615215855475" target="_blank">
+        <span class="dz-icon">
+            <i class="fab fa-whatsapp"></i>
+        </span>
+                        <span>+8615215855475</span>
                     </a>
                 </li>
+
                 <li>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="https://wa.me/8615215855475">
 					<span class="dz-icon">
 						<i class="icon feather icon-layers"></i>
 					</span>
                         <span>Products</span>
                     </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
+                    {% for categorie in categories %}
+
+                        <a class="nav-link {{ selectedCategoryId == categorie.id ? 'active' : '' }}" href="{{ path('filter_home', {'id': categorie.id}) }}">
 					<span class="dz-icon">
-						<i class="icon feather icon-grid"></i>
+						<i class="icon feather icon-layers"></i>
 					</span>
-                        <span>Components</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-book-open"></i>
-					</span>
-                        <span>Pages</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-list"></i>
-					</span>
-                        <span>Featured</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-heart"></i>
-					</span>
-                        <span>Wishlist</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-repeat"></i>
-					</span>
-                        <span>Orders</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-shopping-cart"></i>
-					</span>
-                        <span>My Cart</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-user"></i>
-					</span>
-                        <span>Profile</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" href="#">
-					<span class="dz-icon">
-						<i class="icon feather icon-log-out"></i>
-					</span>
-                        <span>Logout</span>
-                    </a>
-                </li>
+                            <span>{{ categorie.nom }}</span>
+                        </a>
+                    {% endfor %}
             </ul>
             <div class="sidebar-bottom">
                 <ul class="app-setting">
@@ -176,48 +121,48 @@
                 <div class="dz-banner">
                     <div class="swiper banner-swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
                         <div class="swiper-wrapper" id="swiper-wrapper-71d40077ec535ed2" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-1080px, 0px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" style="width: 360px;" role="group" aria-label="3 / 3" data-swiper-slide-index="2">
-                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic3.png');"></div>
+                                <div class="banner-bg" style="background-image: url('{{ asset('assets/images/banner/pic3.png') }}');"></div>
                                 <div class="banner-content">
-                                    <span class="font-w500">#FASHION DAY</span>
-                                    <h2 class="offer">35% Off</h2>
-                                    <p>Discover our latest Products</p>
-                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                    <span class="font-w500">Bienvenue</span>
+                                    <h2 class="offer">100% </h2>
+                                    <p>Decouvrire des nouveau produits</p>
+                                    <a href="https://wa.me/8615215855475" class="btn btn-primary btn-sm">Contactez-nous</a>
                                 </div>
                             </div>
                             <div class="swiper-slide swiper-slide-duplicate-next" style="width: 360px;" role="group" aria-label="1 / 3" data-swiper-slide-index="0">
-                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic1.png');"></div>
+                                <div class="banner-bg" style="background-image: url('{{ asset('assets/images/banner/pic1.png') }}');"></div>
                                 <div class="banner-content">
-                                    <span class="font-w500">#FASHION DAY</span>
-                                    <h2 class="offer">35% Off</h2>
-                                    <p>Discover our latest Products</p>
-                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                    <span class="font-w500">Bienvenue</span>
+                                    <h2 class="offer">100% </h2>
+                                    <p>Decouvrire des nouveau produits</p>
+                                    <a href="https://wa.me/8615215855475" class="btn btn-primary btn-sm">Contactez-nous</a>
                                 </div>
                             </div>
                             <div class="swiper-slide swiper-slide-prev" style="width: 360px;" role="group" aria-label="2 / 3" data-swiper-slide-index="1">
-                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic2.png');"></div>
+                                <div class="banner-bg" style="background-image: url('{{ asset('assets/images/banner/pic2.png') }}');"></div>
                                 <div class="banner-content content-right">
-                                    <span class="font-w500">#WINTER SALE</span>
-                                    <h2 class="offer">35% Off</h2>
-                                    <p>Discover our latest Products</p>
-                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                    <span class="font-w500">Bienvenue</span>
+                                    <h2 class="offer">100% </h2>
+                                    <p>Decouvrire des nouveau produits</p>
+                                    <a href="https://wa.me/8615215855475" class="btn btn-primary btn-sm">Contactez-nous</a>
                                 </div>
                             </div>
                             <div class="swiper-slide swiper-slide-active" style="width: 360px;" role="group" aria-label="3 / 3" data-swiper-slide-index="2">
-                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic3.png');"></div>
+                                <div class="banner-bg" style="background-image: url('{{ asset('assets/images/banner/pic3.png') }}');"></div>
                                 <div class="banner-content">
-                                    <span class="font-w500">#FASHION DAY</span>
-                                    <h2 class="offer">35% Off</h2>
-                                    <p>Discover our latest Products</p>
-                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                    <span class="font-w500">Bienvenue</span>
+                                    <h2 class="offer">100% </h2>
+                                    <p>Decouvrire des nouveau produits</p>
+                                    <a href="https://wa.me/8615215855475" class="btn btn-primary btn-sm">Contactez-nous</a>
                                 </div>
                             </div>
                             <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" style="width: 360px;" role="group" aria-label="1 / 3" data-swiper-slide-index="0">
-                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic1.png');"></div>
+                                <div class="banner-bg" style="background-image: url('{{ asset('assets/images/banner/pic1.png') }}');"></div>
                                 <div class="banner-content">
-                                    <span class="font-w500">#FASHION DAY</span>
-                                    <h2 class="offer">35% Off</h2>
-                                    <p>Discover our latest Products</p>
-                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                    <span class="font-w500">Bienvenue</span>
+                                    <h2 class="offer">100% </h2>
+                                    <p>Decouvrire des nouveau produits</p>
+                                    <a href="https://wa.me/8615215855475" class="btn btn-primary btn-sm">Contactez-nous</a>
                                 </div>
                             </div></div>
                         <div class="swiper-pagination style-2 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span></div>
@@ -248,7 +193,7 @@
                         <div class="col-12">
                             <div class="shop-card">
                                 <div class="dz-media">
-                                    <a href="#">
+                                    <a href="https://wa.me/8615215855475">
                                         <img src="{{ vich_uploader_asset(produit, 'imageFile') }}" alt="image">
                                     </a>
                                     <a href="javascript:void(0);" class="item-bookmark">
@@ -257,7 +202,7 @@
                                 </div>
                                 <div class="dz-content">
                                     <span class="font-12">{{ produit.nom }}</span>
-                                    <h6 class="title"><a href="#">{{ produit.description }}</a></h6>
+                                    <h6 class="title"><a href="https://wa.me/8615215855475">{{ produit.description }}</a></h6>
                                     <h6 class="price">{{ produit.prix }} CFA</h6>
                                 </div>
 
@@ -276,26 +221,26 @@
         <!-- Menubar -->
         <div class="menubar-area footer-fixed rounded-0">
             <div class="toolbar-inner menubar-nav">
-                <a href="#" class="nav-link active">
+                <a href="https://wa.me/8615215855475" class="nav-link active">
                     <i class="icon feather icon-home"></i>
-                    <span>Home</span>
+                    <span>Numero</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="https://wa.me/8615215855475" class="nav-link">
                     <i class="icon feather icon-grid"></i>
-                    <span>Categories</span>
+                    <span>Contact</span>
                 </a>
-                <a href="#" class="nav-link cart-handle">
+                <a href="https://wa.me/8615215855475" class="nav-link cart-handle">
                     <div class="hexad-menu">
-                        <img src="assets/images/menu-shape-dark.svg" class="shape-dark" alt="">
-                        <img src="assets/images/menu-shape-light.svg" class="shape-light" alt="">
+                        <img src="{{ asset('assets/images/menu-shape-dark.svg') }}" class="shape-dark" alt="">
+                        <img src="{{ asset('assets/images/menu-shape-light.svg') }}" class="shape-light" alt="">
                         <i class="icon feather icon-shopping-bag"></i>
                     </div>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="https://wa.me/8615215855475" class="nav-link">
                     <i class="icon feather icon-heart"></i>
-                    <span>Wishlist</span>
+                    <span>whatsap</span>
                 </a>
-                <a href="#" class="nav-link">
+                <a href="https://wa.me/8615215855475" class="nav-link">
                     <i class="icon feather icon-user"></i>
                     <span>Profile</span>
                 </a>
