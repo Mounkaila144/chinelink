@@ -18,6 +18,11 @@ class HomeController extends AbstractController
             'categories' => $categorieRepository->findAll(),
             'selectedCategoryId' => null,
         ]);
+    }  #[Route('/admin', name: 'admin')]
+    public function admin(): Response
+    {
+        return $this->render('home/admin.html.twig', [
+        ]);
     }
 
     #[Route('/filter/{id}', name: 'filter_home')]
