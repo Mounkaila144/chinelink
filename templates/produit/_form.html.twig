@@ -22,6 +22,11 @@
     {{ form_widget(form.imageFile, {'attr': {'class': 'form-control-file'}}) }}
     {{ form_errors(form.imageFile) }}
 </div>
+<div class="form-group">
+    {{ form_label(form.categorie) }}
+    {{ form_widget(form.categorie, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.categorie) }}
+</div>
 
 <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

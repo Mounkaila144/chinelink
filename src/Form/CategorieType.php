@@ -2,32 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\Produit;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class ProduitType extends AbstractType
+class CategorieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nom')
-            ->add('prix')
-            ->add('description')
-            ->add('categorie')
-            ->add('imageFile', VichFileType::class, [
-                'required' => false,
-                'allow_delete' => true,
-            ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Produit::class,
+            'data_class' => Categorie::class,
         ]);
     }
 }

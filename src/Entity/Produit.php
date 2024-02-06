@@ -32,6 +32,9 @@ class Produit
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    private ?Categorie $categorie = null;
+
 
     public function getId(): ?int
     {
@@ -92,5 +95,17 @@ class Produit
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
     }
 }

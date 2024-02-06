@@ -155,15 +155,15 @@ w3cart = function(){
 	var handlePWAModal = function (){
 		if (!window.matchMedia('(display-mode: standalone)').matches) {
 		    setTimeout(function(){
-    			jQuery('.pwa-offcanvas').addClass('show');
-    			jQuery('.pwa-backdrop').addClass('fade show');
+    			jQuery('.pwa-offcanvas').addClass('hide');
+    			jQuery('.pwa-backdrop').addClass('fade hide');
     		}, 3000);
     		jQuery('.pwa-backdrop, .pwa-close, .pwa-btn').on('click',function(){
     			jQuery('.pwa-offcanvas').slideUp(500, function() {
-    				jQuery(this).removeClass('show');
+    				jQuery(this).removeClass('hide');
     			});
     			setTimeout(function(){
-    				jQuery('.pwa-backdrop').removeClass('show');
+    				jQuery('.pwa-backdrop').removeClass('hide');
     			}, 500);
     		}); 
 		}

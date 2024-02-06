@@ -173,36 +173,73 @@
         <!-- Page Content Start -->
         <div class="page-content space-top p-b80">
             <div class="container p-0">
-                <!-- Banner -->
                 <div class="dz-banner">
-                    <div class="swiper banner-swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                    <div class="swiper banner-swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                        <div class="swiper-wrapper" id="swiper-wrapper-71d40077ec535ed2" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-1080px, 0px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" style="width: 360px;" role="group" aria-label="3 / 3" data-swiper-slide-index="2">
                                 <div class="banner-bg" style="background-image: url('assets/images/banner/pic3.png');"></div>
                                 <div class="banner-content">
-                                    <span class="font-w500">COMMANDER vos</span>
-                                    <h2 class="offer">Produits</h2>
-                                    <p>Depuit la chine </p>
+                                    <span class="font-w500">#FASHION DAY</span>
+                                    <h2 class="offer">35% Off</h2>
+                                    <p>Discover our latest Products</p>
+                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper-slide-duplicate-next" style="width: 360px;" role="group" aria-label="1 / 3" data-swiper-slide-index="0">
+                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic1.png');"></div>
+                                <div class="banner-content">
+                                    <span class="font-w500">#FASHION DAY</span>
+                                    <h2 class="offer">35% Off</h2>
+                                    <p>Discover our latest Products</p>
+                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-prev" style="width: 360px;" role="group" aria-label="2 / 3" data-swiper-slide-index="1">
                                 <div class="banner-bg" style="background-image: url('assets/images/banner/pic2.png');"></div>
                                 <div class="banner-content content-right">
-                                    <span class="font-w500">COMMANDER VOS PRODUITS</span>
-                                    <h2 class="offer">A des prix bas</h2>
-                                    <p>Decouvrer les ici</p>
+                                    <span class="font-w500">#WINTER SALE</span>
+                                    <h2 class="offer">35% Off</h2>
+                                    <p>Discover our latest Products</p>
+                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
                                 </div>
                             </div>
+                            <div class="swiper-slide swiper-slide-active" style="width: 360px;" role="group" aria-label="3 / 3" data-swiper-slide-index="2">
+                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic3.png');"></div>
+                                <div class="banner-content">
+                                    <span class="font-w500">#FASHION DAY</span>
+                                    <h2 class="offer">35% Off</h2>
+                                    <p>Discover our latest Products</p>
+                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" style="width: 360px;" role="group" aria-label="1 / 3" data-swiper-slide-index="0">
+                                <div class="banner-bg" style="background-image: url('assets/images/banner/pic1.png');"></div>
+                                <div class="banner-content">
+                                    <span class="font-w500">#FASHION DAY</span>
+                                    <h2 class="offer">35% Off</h2>
+                                    <p>Discover our latest Products</p>
+                                    <a href="product.html" class="btn btn-primary btn-sm">Shop Now</a>
+                                </div>
+                            </div></div>
+                        <div class="swiper-pagination style-2 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span></div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                </div>
 
+
+                <!-- Catagory Start -->
+                <div class="swiper category-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="{{ path('app_home')}}" class="category-btn {{ not selectedCategoryId ? 'bg-black text-white' : '' }}">Tous</a>
                         </div>
-                        <div class="swiper-pagination style-2"></div>
+                        {% for categorie in categories %}
+                            <div class="swiper-slide">
+                                <a href="{{ path('filter_home', {'id': categorie.id}) }}" class="category-btn {{ selectedCategoryId == categorie.id ? 'bg-black text-white' : '' }}">{{ categorie.nom }}</a>
+                            </div>
+                        {% endfor %}
                     </div>
-                </div>
-                <!-- Banner End -->
 
-                <div class="title-bar container mb-0 pb-0">
-                    <h5 class="title font-w800 mb-0">Tout nos produits</h5>
                 </div>
+
 
                 <!-- Shop Section Strat -->
                 <div class="container">
