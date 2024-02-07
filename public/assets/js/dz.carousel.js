@@ -59,10 +59,10 @@ jQuery(document).ready(function() {
 	
 	if(jQuery('.category-swiper').length > 0){
 		var swipercategorySwiper = new Swiper('.category-swiper', {
-			speed: 500,
-			slidesPerView: 4.5,
-			spaceBetween: 12,
-			loop: false,
+			slidesPerView: 'auto',
+			spaceBetween: 10,
+			freeMode: true,
+
 		});
 	}
 	
