@@ -62,6 +62,13 @@ jQuery(document).ready(function() {
 			slidesPerView: 'auto',
 			spaceBetween: 10,
 			freeMode: true,
+			on: {
+				init: function () {
+					document.querySelectorAll('.swiper-slide').forEach(function(slide) {
+						slide.style.width = 'auto'; // Retire le style width
+					});
+				},
+			},
 
 		});
 	}
