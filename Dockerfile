@@ -30,7 +30,7 @@ RUN chown -R composeruser:composeruser /var/www
 USER composeruser
 
 # Installation des dépendances PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Revenir à l'utilisateur root pour les étapes suivantes
 USER root
