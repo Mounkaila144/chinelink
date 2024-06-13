@@ -20,6 +20,7 @@ services:
     volumes:
       - .:/var/www
       - ./nginx/conf.d:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     networks:
       - laravel
     depends_on:
