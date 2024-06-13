@@ -19,12 +19,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Ajouter un utilisateur non-root pour exécuter Composer
 RUN useradd -m -s /bin/bash composeruser
 
-# Copie du code source
-COPY . /var/www
-WORKDIR /var/www
+# Définir le répertoire de travail
+WORKDIR /var/www/chinelink
+
+# Copier le code source dans le conteneur
+COPY . /var/www/chinelink
 
 # Changer les permissions du répertoire de travail
-RUN chown -R composeruser:composeruser /var/www
+RUN chown -R composeruser:composeruser /var/www/chinelink
 
 # Exécuter Composer sous l'utilisateur non-root
 USER composeruser
@@ -36,10 +38,10 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 USER root
 
 # Créer les répertoires nécessaires
-RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
+RUN mkdir -p /var/www/chinelink/storage /var/www/chinelink/bootstrap/cache
 
 # Permissions sur le dossier de stockage
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/chinelink/storage /var/www/chinelink/bootstrap/cache
 
 # Exposition du port 9000 pour PHP-FPM
 EXPOSE 9000

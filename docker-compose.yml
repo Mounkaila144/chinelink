@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: laravel_app
     volumes:
-      - .:/var/www
+      - ./chinelink:/var/www/chinelink
     networks:
       - laravel
 
@@ -18,7 +18,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - .:/var/www
+      - ./chinelink:/var/www/chinelink
       - ./nginx/conf.d:/etc/nginx/conf.d
       - /etc/letsencrypt:/etc/letsencrypt:ro
     networks:
