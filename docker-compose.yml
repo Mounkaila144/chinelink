@@ -5,11 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_app
+    container_name: symfony_app
+    environment:
+      - DATABASE_URL=mysql://laravel:secret@db:3306/laravel
     volumes:
       - .:/var/www/chinelink
     networks:
-      - laravel
+      - symfony
 
   web:
     image: nginx:latest
@@ -22,7 +24,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - /etc/letsencrypt:/etc/letsencrypt:ro
     networks:
-      - laravel
+      - symfony
     depends_on:
       - app
 
@@ -37,11 +39,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - laravel
+      - symfony
   artisan:
     build:
       context: .
-    command: bash -c "composer install && php artisan migrate && php artisan db:seed"
+    command: bash -c "composer install"
     volumes:
       - .:/var/www/chinelink
     depends_on:
@@ -52,5 +54,5 @@ volumes:
   db_data:
 
 networks:
-  laravel:
+  symfony:
     driver: bridge
