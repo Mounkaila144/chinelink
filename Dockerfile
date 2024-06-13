@@ -29,11 +29,14 @@ RUN chown -R composeruser:composeruser /var/www
 # Exécuter Composer sous l'utilisateur non-root
 USER composeruser
 
-# Installation des dépendances PHP
+# Installation des dépendances PHP sans exécuter les scripts
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Revenir à l'utilisateur root pour les étapes suivantes
 USER root
+
+# Créer les répertoires nécessaires
+RUN mkdir -p /var/www/storage /var/www/bootstrap/cache
 
 # Permissions sur le dossier de stockage
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
