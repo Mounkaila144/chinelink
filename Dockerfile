@@ -33,11 +33,9 @@ RUN chown -R www-data:www-data /var/www/chinelink \
     && chown -R www-data:www-data /var/www/chinelink/bootstrap/cache \
     && chmod -R 777 /var/www/chinelink/bootstrap/cache
 
-# Exécuter Composer sous l'utilisateur non-root
-USER composeruser
-
-# Installation des dépendances PHP
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader || { cat /var/www/chinelink/vendor/composer/installed.json; exit 1; }
+# Installation des dépendances PHP en tant que www-data
+USER www-data
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Revenir à l'utilisateur root pour les étapes suivantes
 USER root
