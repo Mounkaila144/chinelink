@@ -16,12 +16,24 @@ RUN apt-get update && apt-get install -y \
 # Installation de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Ajouter un utilisateur non-root pour exécuter Composer
+RUN useradd -m -s /bin/bash composeruser
+
 # Copie du code source
 COPY . /var/www
 WORKDIR /var/www
 
+# Changer les permissions du répertoire de travail
+RUN chown -R composeruser:composeruser /var/www
+
+# Exécuter Composer sous l'utilisateur non-root
+USER composeruser
+
 # Installation des dépendances PHP
 RUN composer install --no-dev --optimize-autoloader
+
+# Revenir à l'utilisateur root pour les étapes suivantes
+USER root
 
 # Permissions sur le dossier de stockage
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
