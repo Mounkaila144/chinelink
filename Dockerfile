@@ -31,8 +31,8 @@ RUN chown -R composeruser:composeruser /var/www/chinelink
 # Exécuter Composer sous l'utilisateur non-root
 USER composeruser
 
-# Installation des dépendances PHP sans exécuter les scripts
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+# Installation des dépendances PHP
+RUN composer install --no-dev --optimize-autoloader
 
 # Revenir à l'utilisateur root pour les étapes suivantes
 USER root
