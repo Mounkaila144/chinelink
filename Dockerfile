@@ -23,7 +23,7 @@ WORKDIR /var/www/chinelink
 COPY . /var/www/chinelink
 
 # Créer les répertoires nécessaires
-RUN mkdir -p /var/www/chinelink/storage /var/www/chinelink/bootstrap/cache
+RUN mkdir -p /var/www/chinelink/storage /var/www/chinelink/bootstrap/cache /var/www/chinelink/var/cache
 
 # Changer les permissions du répertoire de travail
 RUN chown -R www-data:www-data /var/www/chinelink \
@@ -31,14 +31,12 @@ RUN chown -R www-data:www-data /var/www/chinelink \
     && chown -R www-data:www-data /var/www/chinelink/storage \
     && chmod -R 777 /var/www/chinelink/storage \
     && chown -R www-data:www-data /var/www/chinelink/bootstrap/cache \
-    && chmod -R 777 /var/www/chinelink/bootstrap/cache
+    && chmod -R 777 /var/www/chinelink/bootstrap/cache \
+    && chown -R www-data:www-data /var/www/chinelink/var/cache \
+    && chmod -R 777 /var/www/chinelink/var/cache
 
-# Installation des dépendances PHP en tant que www-data
-USER www-data
+# Exécution de Composer en tant que root
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Revenir à l'utilisateur root pour les étapes suivantes
-USER root
 
 # Exposition du port 9000 pour PHP-FPM
 EXPOSE 9000
