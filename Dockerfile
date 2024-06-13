@@ -16,9 +16,6 @@ RUN apt-get update && apt-get install -y \
 # Installation de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Ajouter un utilisateur non-root pour exécuter Composer
-RUN useradd -m -s /bin/bash composeruser
-
 # Définir le répertoire de travail
 WORKDIR /var/www/chinelink
 
@@ -40,7 +37,7 @@ RUN chown -R www-data:www-data /var/www/chinelink \
 USER composeruser
 
 # Installation des dépendances PHP
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader || { cat /var/www/chinelink/vendor/composer/installed.json; exit 1; }
 
 # Revenir à l'utilisateur root pour les étapes suivantes
 USER root
