@@ -26,16 +26,15 @@ WORKDIR /var/www/chinelink
 COPY . /var/www/chinelink
 
 # Changer les permissions du répertoire de travail
-RUN chown -R composeruser:composeruser /var/www/chinelink
-
-# Exécuter Composer sous l'utilisateur non-root
-USER composeruser
+RUN chown -R www-data:www-data /var/www/chinelink \
+    && chmod -R 777 /var/www/chinelink \
+    && chown -R www-data:www-data /var/www/chinelink/storage \
+    && chmod -R 777 /var/www/chinelink/storage \
+    && chown -R www-data:www-data /var/www/chinelink/bootstrap/cache \
+    && chmod -R 777 /var/www/chinelink/bootstrap/cache
 
 # Installation des dépendances PHP
-RUN composer install --no-dev --optimize-autoloader
-
-# Revenir à l'utilisateur root pour les étapes suivantes
-USER root
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Créer les répertoires nécessaires
 RUN mkdir -p /var/www/chinelink/storage /var/www/chinelink/bootstrap/cache
