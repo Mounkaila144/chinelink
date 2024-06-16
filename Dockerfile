@@ -1,44 +1,50 @@
+# Utiliser l'image officielle PHP avec FPM
 FROM php:8.1-fpm
 
-# Installation des extensions PHP nécessaires
+# Définir le répertoire de travail
+WORKDIR /var/www
+
+# Installer les dépendances système
 RUN apt-get update && apt-get install -y \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
+    build-essential \
     libpng-dev \
-    libzip-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    locales \
     zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
     unzip \
     git \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install zip pdo pdo_mysql
+    curl \
+    libonig-dev \
+    libxml2-dev
 
-# Installation de Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Installer les extensions PHP requises
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
-# Définir le répertoire de travail
-WORKDIR /var/www/chinelink
+# Installer Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
+RUN mv composer.phar /usr/local/bin/composer
 
-# Copier le code source dans le conteneur
-COPY . /var/www/chinelink
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_HOME /composer
+ENV PATH $PATH:/composer/vendor/bin
+RUN composer config --global process-timeout 3600
+RUN composer global require "laravel/installer"
 
-# Créer les répertoires nécessaires et définir les permissions
-RUN mkdir -p /var/www/chinelink/var/cache/dev /var/www/chinelink/var/log \
-    && chown -R www-data:www-data /var/www/chinelink \
-    && chmod -R 777 /var/www/chinelink \
-    && chown -R www-data:www-data /var/www/chinelink/var/cache \
-    && chmod -R 777 /var/www/chinelink/var/cache \
-    && chown -R www-data:www-data /var/www/chinelink/var/log \
-    && chmod -R 777 /var/www/chinelink/var/log
+# Copier tous les fichiers du projet
+COPY . /var/www
 
-# Exécution de Composer en tant que root avec débogage
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
-    || { echo "Composer install failed" && ls -al /var/www/chinelink && ls -al /var/www/chinelink/vendor && cat /var/www/chinelink/composer.lock && exit 1; }
+# Donner les permissions correctes
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Vérification de la présence du répertoire vendor après l'installation de Composer
-RUN echo "Vérification après composer install" && ls -al /var/www/chinelink/vendor
 
-# Exposition du port 9000 pour PHP-FPM
+
+# Exposer le port 9000 et lancer PHP-FPM
 EXPOSE 9000
-
 CMD ["php-fpm"]
