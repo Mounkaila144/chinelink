@@ -5,8 +5,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: laravel_app
-        container_name: laravel_app
+        image: chinelink
+        container_name: chinelink
         restart: unless-stopped
         working_dir: /var/www
         volumes:
@@ -17,7 +17,7 @@ services:
 
     webserver:
         image: nginx:alpine
-        container_name: nginx
+        container_name: nginx_chinelink
         restart: unless-stopped
         ports:
             - "81:80"
@@ -31,7 +31,7 @@ services:
 
     db:
         image: mariadb:latest
-        container_name: mariadb
+        container_name: mariadb_chinelink
         restart: unless-stopped
         environment:
             MYSQL_ROOT_PASSWORD: root
