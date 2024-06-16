@@ -39,11 +39,6 @@ RUN composer global require "laravel/installer"
 # Copier tous les fichiers du projet
 COPY . /var/www
 
-# Donner les permissions correctes
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
-
-
 
 # Exposer le port 9000 et lancer PHP-FPM
 EXPOSE 9000
