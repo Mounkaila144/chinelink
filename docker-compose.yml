@@ -41,17 +41,18 @@ services:
             - chinelink
 
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        restart: always
+        image: phpmyadmin/phpmyadmin
         ports:
-            - "8080:80"
+            - 8080:80
+        links:
+            - db
         environment:
             PMA_HOST: db
-            MYSQL_ROOT_PASSWORD: root
-        depends_on:
-            - db
-        networks:
-            - chinelink
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+            PMA_ABSOLUTE_URI: https://chine.nigerdev.com/phpmyadmin
+        volumes:
+            - .docker/phpmyadmin/sessions:/sessions
 
 networks:
     chinelink:
