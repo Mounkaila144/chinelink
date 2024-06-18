@@ -6,7 +6,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./default.conf:/etc/nginx/conf.d/default.conf
+            - ./default.conf:/etc/nginx/conf.d/default.conf:ro
             - .:/var/www
         depends_on:
             - php
@@ -35,6 +35,19 @@ services:
             - "3307:3306"
         volumes:
             - dbdata:/var/lib/mysql
+        networks:
+            - chinelink
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        restart: always
+        ports:
+            - "8080:80"
+        environment:
+            PMA_HOST: db
+            MYSQL_ROOT_PASSWORD: root
+        depends_on:
+            - db
         networks:
             - chinelink
 
