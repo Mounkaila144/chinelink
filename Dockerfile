@@ -1,45 +1,32 @@
-# Utiliser l'image officielle PHP avec FPM
+# Utilisez une image de base PHP compatible avec arm64 pour macOS M1
 FROM php:8.1-fpm
 
-# Définir le répertoire de travail
-WORKDIR /var/www
-
-# Installer les dépendances système
+# Installez les extensions PHP nécessaires
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpng-dev \
-    libjpeg-dev \
     libfreetype6-dev \
-    locales \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libzip-dev \
     zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim \
     unzip \
     git \
-    curl \
-    libonig-dev \
-    libxml2-dev
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo pdo_mysql zip
 
-# Installer les extensions PHP requises
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+# Installez Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Installer Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php composer-setup.php
-RUN php -r "unlink('composer-setup.php');"
-RUN mv composer.phar /usr/local/bin/composer
+WORKDIR /var/www
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
-ENV COMPOSER_HOME /composer
-ENV PATH $PATH:/composer/vendor/bin
-RUN composer config --global process-timeout 3600
-RUN composer global require "laravel/installer"
-
-# Copier tous les fichiers du projet
 COPY . /var/www
 
+RUN composer install
 
-# Exposer le port 9000 et lancer PHP-FPM
-EXPOSE 9000
+# Créez le répertoire var s'il n'existe pas
+RUN mkdir -p /var/www/var
+
+# Changez les permissions des fichiers
+RUN chown -R www-data:www-data /var/www/var /var/www/vendor
+
 CMD ["php-fpm"]
