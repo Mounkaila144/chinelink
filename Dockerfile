@@ -28,5 +28,6 @@ RUN mkdir -p /var/www/var
 
 # Changez les permissions des fichiers
 RUN chown -R www-data:www-data /var/www/var /var/www/vendor
+RUN chown php bin/console d:m:m
 
 CMD ["php-fpm"]
