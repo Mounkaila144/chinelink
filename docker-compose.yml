@@ -33,7 +33,7 @@ services:
             MYSQL_USER: chinelink
             MYSQL_PASSWORD: chinelink
         ports:
-            - "3307:3306"
+            - "3306:3306"
         volumes:
             - dbdata:/var/lib/mysql
         networks:
