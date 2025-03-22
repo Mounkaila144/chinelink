@@ -1,43 +1,140 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Categorie index{% endblock %}
+{% block title %}Gestion des Catégories{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <h1 class="mb-4">Categorie index</h1>
-
-        {% if categories|length > 0 %}
-            <table class="table table-bordered table-hover">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Azioni</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for categorie in categories %}
-                    <tr>
-                        <td>{{ categorie.id }}</td>
-                        <td>{{ categorie.nom }}</td>
-                        <td>
-                            <a class="btn btn-info btn-sm" href="{{ path('app_categorie_show', {'id': categorie.id}) }}">voir</a>
-                            <a class="btn btn-primary btn-sm" href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">Modifier</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="3" class="text-center">Nessun record trovato</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <div class="alert alert-warning" role="alert">
-                Nessun record trovato.
-            </div>
-        {% endif %}
-
-        <a class="btn btn-success" href="{{ path('app_categorie_new') }}">cree un nouveau</a>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1 class="display-6 text-primary fw-bold">
+                <i class="fas fa-tags me-2"></i> Gestion des Catégories
+            </h1>
+            <p class="text-muted">Gestion centralisée de vos catégories de produits</p>
+        </div>
+        <div class="col-md-6 text-md-end d-flex align-items-center justify-content-md-end">
+            <a href="{{ path('app_categorie_new') }}" class="btn btn-primary">
+                <i class="fas fa-plus-circle me-2"></i> Nouvelle Catégorie
+            </a>
+        </div>
     </div>
+
+    <!-- Stats Card -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card border-0 bg-primary text-white">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title mb-0">Total des Catégories</h5>
+                            <h2 class="mt-2 mb-0">{{ categories|length }}</h2>
+                        </div>
+                        <div>
+                            <i class="fas fa-tags fa-3x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if categories|length > 0 %}
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list me-2"></i> Liste des Catégories
+                    </h5>
+                    <div class="input-group" style="width: 250px;">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Rechercher...">
+                        <span class="input-group-text bg-white">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="categoriesTable">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="80">#ID</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col" width="200">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for categorie in categories %}
+                            <tr>
+                                <td>{{ categorie.id }}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm bg-light text-primary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-tag"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">{{ categorie.nom }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-eye me-1"></i> Voir
+                                        </a>
+                                        <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-edit me-1"></i> Modifier
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="fas fa-info-circle me-3 fa-2x"></i>
+            <div>
+                <strong>Information :</strong> Aucune catégorie n'a été trouvée. Veuillez en créer une nouvelle.
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ path('app_categorie_new') }}" class="btn btn-lg btn-primary">
+                <i class="fas fa-plus-circle me-2"></i> Créer votre première catégorie
+            </a>
+        </div>
+    {% endif %}
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fonction de recherche
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                const table = document.getElementById('categoriesTable');
+                if (table) {
+                    const rows = table.getElementsByTagName('tr');
+                    
+                    for (let i = 1; i < rows.length; i++) {
+                        const cells = rows[i].getElementsByTagName('td');
+                        let showRow = false;
+                        
+                        for (let j = 0; j < cells.length; j++) {
+                            const cellText = cells[j].textContent || cells[j].innerText;
+                            if (cellText.toLowerCase().indexOf(searchTerm) > -1) {
+                                showRow = true;
+                                break;
+                            }
+                        }
+                        
+                        rows[i].style.display = showRow ? '' : 'none';
+                    }
+                }
+            });
+        }
+    });
+    </script>
 {% endblock %}
