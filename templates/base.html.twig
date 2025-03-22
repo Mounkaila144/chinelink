@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- SEO and Sharing -->
-    <meta name="author" content="DexignZone">
+    <meta name="author" content="Ramlashop">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="android, ios, mobile, application template, progressive web app, ui kit, multiple color, dark layout">
     <meta name="description" content="Vous pouvez trouver tout sort d'article avec Nous venant de la chine ">
@@ -25,10 +25,17 @@
     <!-- PWA Version -->
     <link rel="manifest" href="{{ asset('manifest.json') }}">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Global CSS -->
     <link href="{{ asset('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
@@ -38,10 +45,41 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900;1000&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <style>
+        .brand-text-home {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #ec4899, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .brand-text-home i {
+            font-size: 20px;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .brand-text-home:hover {
+            transform: scale(1.03);
+            letter-spacing: 1.2px;
+        }
+
+        .dark-theme .brand-text-home {
+            background: linear-gradient(45deg, #f472b6, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 
     {% block stylesheets %}
     {% endblock %}

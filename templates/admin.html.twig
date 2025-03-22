@@ -30,7 +30,7 @@
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,6 +54,27 @@
             background-color: #f5f7fb;
             overflow-x: hidden;
             min-height: 100vh;
+        }
+        
+        .brand-text {
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-text:hover {
+            transform: scale(1.03);
+            letter-spacing: 1.2px;
+        }
+        
+        .sidebar-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color)) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         /* Sidebar styles */
@@ -236,10 +257,10 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h4 class="mb-0">
-                    <i class="fas fa-tachometer-alt me-2"></i>
-                    Administration
-                </h4>
+                <div class="text-center py-2">
+                    <h3 class="fw-bold mb-0 text-white">RamlaShop</h3>
+                    <p class="text-white-50 small mb-0">Panneau d'administration</p>
+                </div>
             </div>
             
             <ul class="list-unstyled components">
@@ -266,7 +287,7 @@
             <div class="p-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-shield-alt text-primary me-2"></i>
-                    <small>ChineLink Admin v1.0</small>
+                    <small>RamlaShop Admin v1.0</small>
                 </div>
             </div>
         </nav>
@@ -275,9 +296,12 @@
         <div id="content">
             <!-- Top Navbar -->
             <nav class="top-navbar d-flex justify-content-between align-items-center">
-                <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <div class="d-flex align-items-center">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h4 class="d-none d-md-block mb-0 brand-text">RamlaShop Administration</h4>
+                </div>
                 
                 <div class="d-flex align-items-center">
                     <div class="dropdown">
@@ -295,9 +319,9 @@
 
             <!-- Main Content -->
             <div class="container-fluid py-4 px-4">
-                {% block body %}
-                {% endblock %}
-            </div>
+{% block body %}
+{% endblock %}
+</div>
         </div>
     </div>
     
